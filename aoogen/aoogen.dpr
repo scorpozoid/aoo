@@ -16,7 +16,8 @@ uses
   aoogenRandom in 'aoogenRandom.pas',
   aoogenDateTime in 'aoogenDateTime.pas',
   aoogenDate in 'aoogenDate.pas',
-  aoogenTime in 'aoogenTime.pas';
+  aoogenTime in 'aoogenTime.pas',
+  aoogenVersion in 'aoogenVersion.pas';
 
 type
   TCliParamArray = array of string;
@@ -44,11 +45,28 @@ var
     end;
   end;
 
+  function IsVersionRequest(const aParameter: string): Boolean;
+  const
+    cVersionKeyword = 'version';
+    cVersionAbbr = 'v';
+  begin
+    Result :=
+         SameText(aParameter, '--' + cVersionKeyword)
+      or SameText(aParameter,  '-' + cVersionKeyword)
+      or SameText(aParameter,  '/' + cVersionKeyword)
+      or SameText(aParameter,  '-' + cVersionAbbr)
+      or SameText(aParameter,  '/' + cVersionAbbr);
+  end;
+
 begin
   try
     vResult := EmptyStr;
     vParameterArray := PrepareParameterArray;
     if (0 < Length(vParameterArray)) then try
+      if (IsVersionRequest(vParameterArray[0])) then begin
+        PrintVersion;
+        Exit;
+      end;
       vModeFormat := GetModeFormat(vParameterArray[0]);
       if (ofNone <> vModeFormat) then begin
         vAoogenFactory := TAoogenFactory.Create(nil);
