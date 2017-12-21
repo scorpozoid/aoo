@@ -11,7 +11,8 @@ uses
   aoogenFactory in 'aoogenFactory.pas',
   aoogenGenerator in 'aoogenGenerator.pas',
   aoogenMode in 'aoogenMode.pas',
-  aoogenHelp in 'aoogenHelp.pas';
+  aoogenHelp in 'aoogenHelp.pas',
+  aoogenTimestamp in 'aoogenTimestamp.pas';
 
 type
   TCliParamArray = array of string;
