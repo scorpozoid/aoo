@@ -33,10 +33,11 @@ end;
 
 class function TUnixtimeStringGenerator.GetUnixtime: Int64;
 begin
-  Result := SecondsBetween(
-    Now,
-    EncodeDateTime(1970, 1, 1, 0, 0, 0, 0)
-  );
+  Result := DateTimeToUnix(Now);
+  // Result := SecondsBetween(
+  //   Now,
+  //   EncodeDateTime(1970, 1, 1, 0, 0, 0, 0)
+  // );
 end;
 
 end.
