@@ -6,87 +6,35 @@ program aoogen;
 
 uses
   System.SysUtils,
-  aoogenGuid in 'aoogenGuid.pas';
+  aoogenGuid in 'aoogenGuid.pas',
+  aoogenUnixtime in 'aoogenUnixtime.pas',
+  aoogenFactory in 'aoogenFactory.pas',
+  aoogenGenerator in 'aoogenGenerator.pas',
+  aoogenMode in 'aoogenMode.pas',
+  aoogenHelp in 'aoogenHelp.pas';
 
 type
-  TOutputFormatDocket = record
-    Abbr: string;
-    Title: string;
-    Sample: string;
-    Descr: string;
-  end;
-
-  TOutputFormat = (
-    ofNone
-  , ofGuid
-  , ofDate
-  , ofTime
-  , ofDateTime
-  , ofTimestamp
-  , ofUnixTime
-  , ofRandom
-  );
+  TCliParamArray = array of string;
 
 var
   vResult: string;
-  vParameter: string;
-  vOutputFormat: TOutputFormat;
+  vModeFormat: TModeFormat;
+  vAoogenFactory: TAoogenFactory;
+  vArgs: TAoogenGeneratorArgs;
+  vGenerator: TAoogenGenerator;
+  vParameterArray: TAoogenGeneratorParameterArray;
 
-const
-  cFormatCount = 1;
-
-  cFormatArray: array [TOutputFormat] of TOutputFormatDocket = (
-    (Abbr: 'N'; Title: 'NONE'; Sample: ''; Descr: 'empty string')
-  , (Abbr: 'G'; Title: 'GUID'; Sample: '9F41170C-D8E2-4282-B164-BE813D89D015'; Descr: 'GUID without curly braces')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  , (Abbr: '';  Title: ''; Sample: ''; Descr: '')
-  );
-
-  procedure PrintHelp;
+  function PrepareParameterArray: TAoogenGeneratorParameterArray;
   var
-    vH: TOutputFormat;
-    vLine: string;
-  const
-    cFmtFormatLine = '%s (%s): %s';
+    vI: Integer;
+    vParameter: string;
   begin
-    {$IFDEF DEBUG}
-    Writeln('DEBUG VERSION');
-    {$ENDIF} // DEBUG
-    for vH := Low(cFormatArray) to High(cFormatArray) do begin
-      vLine := Format(cFmtFormatLine, [
-        LowerCase(cFormatArray[vH].Abbr)
-      , UpperCase(cFormatArray[vH].Abbr)
-      , cFormatArray[vH].Descr
-      ]);
-      if (EmptyStr <> cFormatArray[vH].Sample) then
-        vLine := Format('%s (%s)', [vLine, cFormatArray[vH].Sample]);
-      Writeln(vLine);
-    end;
-  end;
-
-  function GetOutputFormat(const aStringValue: string): TOutputFormat;
-  var
-    vI: TOutputFormat;
-    vSuitable: Boolean;
-    vValue: string;
-  begin
-    Result := ofNone;
-    vValue := Trim(aStringValue);
-    for vI := Low(cFormatArray) to High(cFormatArray) do begin
-      vSuitable :=
-           SameText(vValue, cFormatArray[vI].Abbr)
-        or SameText(vValue, '-' + cFormatArray[vI].Abbr)
-        {$IFDEF MSWINDOWS}
-        or SameText(vValue, '/' + cFormatArray[vI].Abbr)
-        {$ENDIF} // MSWINDOWS
-        ;
-      if (vSuitable) then begin
-        Result := vI;
-        Break;
+    Result := nil;
+    if (0 < ParamCount) then begin
+      for vI := 1 to ParamCount do begin
+        vParameter := ParamStr(vI);
+        SetLength(Result, Length(Result) + 1);
+        Result[Length(Result) - 1] := vParameter;
       end;
     end;
   end;
@@ -94,15 +42,30 @@ const
 begin
   try
     vResult := EmptyStr;
-    if (0 < ParamCount) then begin
-      vParameter := ParamStr(1);
-      vOutputFormat := GetOutputFormat(vParameter);
-      case (vOutputFormat) of
-        ofNone: vResult := EmptyStr;
-        ofGuid: vResult := TGuidStringGenerator.GenetateGuidString;
-      else
-        vResult := EmptyStr;
+    vParameterArray := PrepareParameterArray;
+    if (0 < Length(vParameterArray)) then try
+      vModeFormat := GetModeFormat(vParameterArray[0]);
+      if (ofNone <> vModeFormat) then begin
+        vAoogenFactory := TAoogenFactory.Create(nil);
+        try
+          vAoogenFactory.Mode := vModeFormat;
+          vArgs := vAoogenFactory.BuildGeneratorArgs;
+          try
+            if (Assigned(vArgs)) then
+              vArgs.SetParameters(vParameterArray);
+            vGenerator := vAoogenFactory.BuildGenerator;
+            if (Assigned(vGenerator)) then
+              vResult := vGenerator.GenerateValue(vArgs);
+          finally
+            if (Assigned(vArgs)) then
+              vArgs.Free;
+          end;
+        finally
+          vAoogenFactory.Free;
+        end;
       end;
+    finally
+      vParameterArray := nil;
     end;
     if (EmptyStr <> vResult) then
       Writeln(vResult)
