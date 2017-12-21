@@ -51,6 +51,9 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
@@ -65,9 +68,8 @@
         <DCC_UsePackage>DBXInterBaseDriver;DataSnapServer;DataSnapCommon;DbxCommonDriver;dbxcds;CustomIPTransport;dsnap;IndyIPServer;IndyCore;bindcompfmx;dbrtl;bindcomp;inetdb;xmlrtl;ibxpress;bindengine;soaprtl;DBXInformixDriver;DBXFirebirdDriver;inet;DBXSybaseASADriver;dbexpress;IndyIPClient;DBXSqliteDriver;fmx;IndySystem;DataSnapClient;DataSnapProviderClient;DBXOracleDriver;fmxase;IndyIPCommon;inetdbxpress;rtl;DbxClientDriver;IndyProtocols;DBXMySQLDriver;bindcompdbx;fmxobj;fmxdae;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Debugger_RunParams>guid</Debugger_RunParams>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_UsePackage>cxPivotGridChartRS17;dxSkinSevenRS17;dxSkinBlueprintRS17;dxSkinHighContrastRS17;AdvComp;dxSkinOffice2007BlackRS17;dxCoreRS17;dac170;cxPageControldxBarPopupMenuRS17;dxSkinXmas2008BlueRS17;dxPSDBTeeChartRS17;RaizeComponentsVcl;dxSkinSummer2008RS17;dxPSTeeChartRS17;dxSkinBlueRS17;dxSkinDarkRoomRS17;dxPScxSchedulerLnkRS17;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;dxPScxTLLnkRS17;dxRibbonRS17;DbxCommonDriver;cxDataRS17;vclimg;dxSkinsdxBarPainterRS17;dxPSdxDBTVLnkRS17;dbxcds;DatasnapConnectorsFreePascal;dxSkinMoneyTwinsRS17;vcldb;cxExportRS17;dxPSCoreRS17;dxBarExtItemsRS17;dxGDIPlusRS17;dxNavBarRS17;CustomIPTransport;cxLibraryRS17;cxGridRS17;dxSkinOffice2010BlackRS17;dsnap;IndyIPServer;unidac170;IndyCore;dxSkinMcSkinRS17;CloudService;dxPScxCommonRS17;dxSkiniMaginaryRS17;dxSkinsdxDLPainterRS17;dxWizardControlRS17;dxPScxVGridLnkRS17;unidacfmx170;dxSkinSevenClassicRS17;dxPScxExtCommonRS17;FMXTee917;TeeGL917;dxPScxSSLnkRS17;dxSkinLilianRS17;dxSkinOffice2010BlueRS17;dxPSdxLCLnkRS17;bindcompfmx;dxSkinOffice2010SilverRS17;vcldbx;cxSchedulerGridRS17;dbrtl;bindcomp;inetdb;dxBarRS17;DBXOdbcDriver;dxBarDBNavRS17;dxSkinWhiteprintRS17;xmlrtl;dxSkinsdxRibbonPainterRS17;ibxpress;dxDockingRS17;vclactnband;bindengine;soaprtl;dxADOServerModeRS17;bindcompvcl;dxBarExtDBItemsRS17;dxSkinOffice2007PinkRS17;dxPSPrVwRibbonRS17;vclie;cxPageControlRS17;FMXTeeImport917;dxSkinscxPCPainterRS17;dxmdsRS17;dxSkinTheAsphaltWorldRS17;DBXInformixDriver;Intraweb;cxSchedulerTreeBrowserRS17;dxPsPrVwAdvRS17;dxSkinSilverRS17;dxdborRS17;dsnapcon;DBXFirebirdDriver;inet;AdvTeeChart;vclx;dxSkinStardustRS17;cxEditorsRS17;DBXSybaseASADriver;crcontrols170;dbexpress;IndyIPClient;dxSkinVS2010RS17;cxTreeListdxBarPopupMenuRS17;dxThemeRS17;DBXSqliteDriver;dxPScxGridLnkRS17;fmx;IndySystem;dxSkinValentineRS17;vclib;inetdbbde;DataSnapClient;dxSkinDevExpressStyleRS17;DataSnapProviderClient;DBXSybaseASEDriver;cxBarEditItemRS17;dxServerModeRS17;cxPivotGridOLAPRS17;cxSchedulerRS17;MetropolisUILiveTile;dxSkinPumpkinRS17;dxPSLnksRS17;TeeUI917;cxVerticalGridRS17;dxPSdxDBOCLnkRS17;dxSkinSpringTimeRS17;vcldsnap;dacvcl170;dxSkinDevExpressDarkStyleRS17;DBXDb2Driver;DBXOracleDriver;dxSkinLiquidSkyRS17;vclribbon;TeeDB917;cxSpreadSheetRS17;fmxase;vcl;TeeLanguage917;dxSkinOffice2007SilverRS17;IndyIPCommon;DBXMSSQLDriver;dxPSdxOCLnkRS17;dcldxSkinsCoreRS17;TeeWorld917;inetdbxpress;webdsnap;FMXTeePro917;dxSkinCoffeeRS17;adortl;FMXTeeDB917;TeeTree2D17Tee9;dxSkinscxSchedulerPainterRS17;dxtrmdRS17;TeeMaker117;dxPScxPCProdRS17;RaizeComponentsVclDb;rtl;DbxClientDriver;dxTabbedMDIRS17;dxSkinSharpPlusRS17;dxComnRS17;dxSkinsCoreRS17;dxSkinLondonLiquidSkyRS17;dxdbtrRS17;TeePro917;TeeImport917;dxSkinBlackRS17;dxorgcRS17;svnui;IndyProtocols;DBXMySQLDriver;dxLayoutControlRS17;bindcompdbx;dxSkinOffice2007BlueRS17;FmxTeeUI917;dxPScxPivotGridLnkRS17;dxSpellCheckerRS17;vcltouch;dxSkinOffice2007GreenRS17;dxSkinSharpRS17;websnap;dxSkinFoggyRS17;dxTileControlRS17;VclSmp;dxSkinDarkSideRS17;cxPivotGridRS17;DataSnapConnectors;dacfmx170;fmxobj;cxTreeListRS17;dxSkinGlassOceansRS17;dxPSdxFCLnkRS17;unidacvcl170;svn;dxFlowChartRS17;fmxdae;TeeImage917;dxSkinsdxNavBarPainterRS17;bdertl;FMXTeeLanguage917;Tee917;DataSnapIndy10ServerTransport;dxDBXServerModeRS17;dxSkinCaramelRS17;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -104,6 +106,10 @@
         </DelphiCompile>
         <DCCReference Include="aoogenGuid.pas"/>
         <DCCReference Include="aoogenUnixtime.pas"/>
+        <DCCReference Include="aoogenFactory.pas"/>
+        <DCCReference Include="aoogenGenerator.pas"/>
+        <DCCReference Include="aoogenMode.pas"/>
+        <DCCReference Include="aoogenHelp.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

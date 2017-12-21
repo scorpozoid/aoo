@@ -2,20 +2,28 @@ unit aoogenUnixtime;
 
 interface
 uses
-  SysUtils, DateUtils, Classes;
+  SysUtils, DateUtils, Classes,
+  aoogenGenerator;
 
 type
-  TUnixtimeStringGenerator = class(TComponent)
+  TUnixtimeStringGenerator = class(TAoogenGenerator)
   private
     class function GetUnixtime: Int64;
   public
     class function GenetateUnixtimeString: string;
+    function GenerateValue(const aArgs: TAoogenGeneratorArgs): string; override;
   end;
 
 implementation
 
 
 { TUnixtimeStringGenerator }
+
+function TUnixtimeStringGenerator.GenerateValue(const aArgs: TAoogenGeneratorArgs): string;
+begin
+  Result := GenetateUnixtimeString;
+end;
+
 
 class function TUnixtimeStringGenerator.GenetateUnixtimeString: string;
 begin
