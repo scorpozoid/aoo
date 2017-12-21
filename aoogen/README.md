@@ -11,7 +11,7 @@ aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
 aoogen datetime -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
-aoogen timestamp (aka aoogen ts) -m (--minus), -d (--dot), -s (--solid), -i (--iso)
+aoogen timestamp (aka aoogen ts) -h (--human), -i (--iso), -m (--minus), -d (--dot), -s (--solid)
 
 aoogen unixtime (aka aoogen ut) 
 
