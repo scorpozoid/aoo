@@ -6,7 +6,8 @@ program aoogen;
 
 uses
   System.SysUtils,
-  aoogenGuid in 'aoogenGuid.pas';
+  aoogenGuid in 'aoogenGuid.pas',
+  aoogenUnixtime in 'aoogenUnixtime.pas';
 
 type
   TOutputFormatDocket = record
