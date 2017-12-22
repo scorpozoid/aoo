@@ -178,8 +178,10 @@ var
 const
   cTimestampDividerMinus = '-';
   cTimestampDividerDot = '.';
-  cTimestampKeyArgCount = 1;
+  // cTimestampKeyArgCount = 1;
   cTimestampKeyArgArray: array[TTimestampKeyArgItem] of TTimestampKeyArgDocket = (
+
+
     (Item: taiNone;  ShortName: '-'; LongName: '--';)
   , (Item: taiHuman; ShortName: 'h'; LongName: 'human';)
 //, (Item: taiHuman; ShortName: 'l'; LongName: 'local';)
