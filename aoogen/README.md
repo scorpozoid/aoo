@@ -1,5 +1,5 @@
 # aoo
-Some text convert/generate utilities
+Some text generate utilities
 
 aoogen none generates nothing (-;
 
