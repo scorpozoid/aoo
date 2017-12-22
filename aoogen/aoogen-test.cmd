@@ -33,6 +33,16 @@ aoogen g -d --curlybrace --solid
 aoogen guid --solid --lower
 aoogen guid --colon --lower
 
+aoogen guid --solid --wrap="curlybrace,                 squarebraces, singlequote, doublequote"
+aoogen guid --solid --wrap=curlybrace,squarebraces,singlequote,doublequote
+aoogen guid --solid --wrap curlybrace,squarebraces,singlequote,doublequote
+aoogen guid --solid --w curlybrace,squarebraces,singlequote,doublequote
+aoogen guid --solid --wrap 
+aoogen guid --solid --wrap=
+aoogen guid --wrap --solid  
+aoogen guid --wrap= --solid
+aoogen guid -w --solid
+aoogen guid -w ab,dq --lowercase --minus
 
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)

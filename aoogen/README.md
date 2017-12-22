@@ -3,10 +3,7 @@ Some text convert/generate utilities
 
 aoogen none generates nothing (-;
 
-aoogen guid -m (--minus), -d (--dot), -ñ (--colon), -s (--solid), -b|-cb (--brace, --braces, --curlybrace, --curlybraces), -u (--upper, --uppercase), -l (--lower, --lowercase)
-
-aoogen guid --quote=curlybrace,squarebraces,singlequote,doublequote
-aoogen g -q c,s,sq,dq
+aoogen guid -m (--minus), -d (--dot), -ñ (--colon), -s (--solid), -u (--upper, --uppercase), -l (--lower, --lowercase), --wrap=curlybrace,squarebraces,singlequote,doublequote, 
 
 aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
