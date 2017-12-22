@@ -13,7 +13,8 @@ set PATH=%PATH%;%WINDIR%\Microsoft.NET\Framework\v3.5\
 
 call rsvars.bat 
 
-msbuild aoogen.dproj "/t:clean;build" "/p:Configuration=Release"
+msbuild aoogen.dproj "/t:clean;build" "/p:Config=Release"
+rem msbuild aoogen.dproj "/t:clean;build" "/p:Config=Debug"
 
 if exist *.dcu del *.dcu
 if exist *.local del *.local

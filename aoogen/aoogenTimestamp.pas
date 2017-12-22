@@ -16,6 +16,7 @@ type
     FSolidMode: Boolean;
     FDateSeparator: string;
     FTimeSeparator: string;
+    FDateTimeSeparator: string;
     FMsecSeparator: string;
 
     procedure Reset;
@@ -27,6 +28,7 @@ type
 
     property DateSeparator: string read FDateSeparator;
     property TimeSeparator: string read FTimeSeparator;
+    property DateTimeSeparator: string read FDateTimeSeparator;
     property MsecSeparator: string read FMsecSeparator;
     property IsoMode: Boolean read FIsoMode;
     property HumanMode: Boolean read FHumanMode;
@@ -34,9 +36,12 @@ type
   end;
 
   TTimestampStringGenerator = class(TAoogenGenerator)
-  public
+  private
     class function GenetateSolidTimestampString: string;
     class function GenetateIsoTimestampString: string;
+    class function GenetateHumanTimestampString: string;
+    class function GenetateTimestampString(const aArgs: TTimestampStringGeneratorArg): string;
+  public
     function GenerateValue(const aArgs: TAoogenGeneratorArgs): string; override;
   end;
 
@@ -52,10 +57,42 @@ begin
   Result := GenetateSolidTimestampString;
   if (aArgs is TTimestampStringGeneratorArg) then begin
     vArgs := aArgs as TTimestampStringGeneratorArg;
-    if (vArgs.IsoMode) then begin
-      Result := GenetateIsoTimestampString;
+    if (not vArgs.SolidMode) then begin
+      if (vArgs.IsoMode) then
+        Result := GenetateIsoTimestampString
+      else if (vArgs.HumanMode) then
+        Result := GenetateHumanTimestampString
+      else
+        Result := GenetateTimestampString(vArgs);
     end;
   end;
+end;
+
+
+class function TTimestampStringGenerator.GenetateHumanTimestampString: string;
+const
+  cFmtLocalSettingsTimestamp = 'yyyy/mm/dd hh:nn:ss.zzz';
+begin
+  Result := FormatDateTime(cFmtLocalSettingsTimestamp, Now);
+end;
+
+
+class function TTimestampStringGenerator.GenetateTimestampString(const aArgs: TTimestampStringGeneratorArg): string;
+const
+  cFmtTimestamp = 'yyyy"%s"mm"%s"dd"%s"hh"%s"nn"%s"ss"%s"zzz';
+var
+  vFmtTimestamp: string;
+begin
+  if (Assigned(aArgs)) then begin
+    vFmtTimestamp := Format(cFmtTimestamp, [
+      aArgs.DateSeparator, aArgs.DateSeparator, aArgs.DateSeparator
+    , aArgs.DateTimeSeparator
+    , aArgs.TimeSeparator, aArgs.TimeSeparator, aArgs.TimeSeparator
+    , aArgs.MsecSeparator
+    ]);
+    Result := FormatDateTime(vFmtTimestamp, Now);
+  end else
+    Result := GenetateSolidTimestampString;
 end;
 
 
@@ -100,8 +137,8 @@ end;
 constructor TTimestampStringGeneratorArg.Create(AOwner: TComponent);
 begin
   Reset;
+  FSolidMode := True;
   inherited;
-
 end;
 
 
@@ -114,7 +151,7 @@ end;
 
 procedure TTimestampStringGeneratorArg.Reset;
 begin
-  FSolidMode := True;
+  FSolidMode := False;
   FIsoMode := False;
   FHumanMode := False;
   FDateSeparator := EmptyStr;
@@ -125,7 +162,7 @@ end;
 
 function TTimestampStringGeneratorArg.SetParameters(const aParameterArray: TAoogenGeneratorParameterArray): string;
 type
-  TTimestampKeyArgItem = (taiNone, taiHuman, taiIso, taiMinus, taiDot, taiSolid);
+  TTimestampKeyArgItem = (taiNone, taiHuman {aka "local settings"}, taiIso, taiMinus, taiDot, taiSolid);
 
   TTimestampKeyArgDocket = record
     Item: TTimestampKeyArgItem;
@@ -140,11 +177,12 @@ var
 
 const
   cTimestampDividerMinus = '-';
-  cTimestampDividerDot = '-';
+  cTimestampDividerDot = '.';
   cTimestampKeyArgCount = 1;
   cTimestampKeyArgArray: array[TTimestampKeyArgItem] of TTimestampKeyArgDocket = (
     (Item: taiNone;  ShortName: '-'; LongName: '--';)
   , (Item: taiHuman; ShortName: 'h'; LongName: 'human';)
+//, (Item: taiHuman; ShortName: 'l'; LongName: 'local';)
   , (Item: taiIso;   ShortName: 'i'; LongName: 'iso';)
   , (Item: taiMinus; ShortName: 'm'; LongName: 'minus';)
   , (Item: taiDot;   ShortName: 'd'; LongName: 'dot';)
@@ -177,6 +215,7 @@ const
   end;
 
 begin
+  Reset;
   if (0 < Length(aParameterArray)) then begin
     vI := Low(aParameterArray);
     while (vI <= High(aParameterArray)) do begin
@@ -189,15 +228,15 @@ begin
           FDateSeparator := cTimestampDividerMinus;
           FTimeSeparator := cTimestampDividerMinus;
           FMsecSeparator := cTimestampDividerMinus;
+          FDateTimeSeparator := cTimestampDividerMinus;
         end;
         taiDot: begin
           FDateSeparator := cTimestampDividerDot;
           FTimeSeparator := cTimestampDividerDot;
           FMsecSeparator := cTimestampDividerDot;
+          FDateTimeSeparator := cTimestampDividerDot;
         end;
         taiSolid: FSolidMode := True;
-      else
-        Reset;
       end;
 
       vI := vI + 1;
