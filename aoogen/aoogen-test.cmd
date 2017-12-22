@@ -13,6 +13,8 @@ aoogen guid -s
 aoogen g -s -b
 aoogen g -m -b
 
+aoogen unixtime
+
 aoogen timestamp
 aoogen timestamp -h
 aoogen timestamp --human
