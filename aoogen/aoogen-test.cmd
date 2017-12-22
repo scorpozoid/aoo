@@ -44,6 +44,13 @@ aoogen guid --wrap= --solid
 aoogen guid -w --solid
 aoogen guid -w ab,dq --lowercase --minus
 
+aoogen random -r 100000 -o -1000 --zero-padding
+aoogen random --zero-padding --range=10000 -o
+aoogen rnd --offset=-1000 --space-padding --range=3000000000
+aoogen rnd --offset=3000000000 --space-padding --range=100
+aoogen rnd --offset=3000000000 --space-padding --range=
+aoogen random -r
+aoogen random
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen datetime -h (--human), -m (--minus), -d (--dot), -s (--solid)

@@ -12,7 +12,8 @@ uses
   aoogenGenerator in 'aoogenGenerator.pas',
   aoogenMode in 'aoogenMode.pas',
   aoogenHelp in 'aoogenHelp.pas',
-  aoogenTimestamp in 'aoogenTimestamp.pas';
+  aoogenTimestamp in 'aoogenTimestamp.pas',
+  aoogenRandom in 'aoogenRandom.pas';
 
 type
   TCliParamArray = array of string;

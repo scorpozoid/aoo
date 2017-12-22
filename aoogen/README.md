@@ -15,6 +15,6 @@ aoogen timestamp (aka aoogen ts) -h (--human), -i (--iso), -m (--minus), -d (--d
 
 aoogen unixtime (aka aoogen ut) 
 
-aoogen random -r (--range=), -o (--offset=), -z (--zero-padding)
+aoogen random (aoogen rnd) -r (--range=), -o (--offset=), -z (--zero-padding), -s (--space-padding)
 
  

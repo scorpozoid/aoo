@@ -7,6 +7,7 @@ uses
   aoogenGenerator,
   aoogenUnixtime,
   aoogenTimestamp,
+  aoogenRandom,
   aoogenGuid;
 
 type
@@ -53,7 +54,7 @@ begin
 //    ofDateTime
     ofTimestamp: Result := TTimestampStringGenerator.Create(nil);
     ofUnixTime: Result := TUnixtimeStringGenerator.Create(nil);
-//    ofRandom
+    ofRandom: Result := TRandomStringGenerator.Create(nil);
   else
     Result := nil;
   end;
@@ -70,7 +71,7 @@ begin
 //    ofDateTime
     ofTimestamp: Result := TTimestampStringGeneratorArg.Create(nil);
     ofUnixTime: Result := nil;
-//    ofRandom
+    ofRandom: Result := TRandomStringGeneratorArg.Create(nil);
   else
     Result := nil;
   end;
