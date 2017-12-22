@@ -6,6 +6,7 @@ uses
   aoogenMode,
   aoogenGenerator,
   aoogenUnixtime,
+  aoogenTimestamp,
   aoogenGuid;
 
 type
@@ -47,14 +48,12 @@ begin
   case (FMode) of
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGenerator.Create(nil);
-//
 //    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
 //    ofTime
 //    ofDateTime
-//    ofTimestamp
+    ofTimestamp: Result := TTimestampStringGenerator.Create(nil);
     ofUnixTime: Result := TUnixtimeStringGenerator.Create(nil);
 //    ofRandom
-//
   else
     Result := nil;
   end;
@@ -66,14 +65,12 @@ begin
   case (FMode) of
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGeneratorArgs.Create(nil);
-//
 //    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
 //    ofTime
 //    ofDateTime
-//    ofTimestamp
+    ofTimestamp: Result := TTimestampStringGeneratorArg.Create(nil);
     ofUnixTime: Result := nil;
 //    ofRandom
-//
   else
     Result := nil;
   end;
