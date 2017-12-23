@@ -60,6 +60,17 @@ aoogen datetime --dot --solid
 aoogen dt -m -d -s
 aoogen dt -m -s -d
 
+aoogen date --human
+aoogen date --minus
+aoogen date --solid
+aoogen date --slash
+aoogen date --dot 
+aoogen date --dot --solid
+aoogen d -m -d -s
+aoogen d -m -s -d
+aoogen d -m -s -l
+aoogen d -l
+
 
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)

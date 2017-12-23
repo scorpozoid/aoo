@@ -14,7 +14,8 @@ uses
   aoogenHelp in 'aoogenHelp.pas',
   aoogenTimestamp in 'aoogenTimestamp.pas',
   aoogenRandom in 'aoogenRandom.pas',
-  aoogenDateTime in 'aoogenDateTime.pas';
+  aoogenDateTime in 'aoogenDateTime.pas',
+  aoogenDate in 'aoogenDate.pas';
 
 type
   TCliParamArray = array of string;

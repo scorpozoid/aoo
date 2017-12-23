@@ -8,6 +8,7 @@ uses
   aoogenUnixtime,
   aoogenTimestamp,
   aoogenDateTime,
+  aoogenDate,
   aoogenRandom,
   aoogenGuid;
 
@@ -50,7 +51,7 @@ begin
   case (FMode) of
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGenerator.Create(nil);
-//    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
+    ofDate: Result := TDateStringGenerator.Create(nil);
 //    ofTime
     ofDateTime: Result := TDateTimeStringGenerator.Create(nil);
     ofTimestamp: Result := TTimestampStringGenerator.Create(nil);
@@ -67,7 +68,7 @@ begin
   case (FMode) of
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGeneratorArgs.Create(nil);
-//    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
+    ofDate: Result := TDateStringGeneratorArg.Create(nil);
 //    ofTime
     ofDateTime: Result := TDateTimeStringGeneratorArg.Create(nil);
     ofTimestamp: Result := TTimestampStringGeneratorArg.Create(nil);
