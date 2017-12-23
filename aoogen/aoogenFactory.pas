@@ -7,6 +7,7 @@ uses
   aoogenGenerator,
   aoogenUnixtime,
   aoogenTimestamp,
+  aoogenDateTime,
   aoogenRandom,
   aoogenGuid;
 
@@ -51,7 +52,7 @@ begin
     ofGuid: Result := TGuidStringGenerator.Create(nil);
 //    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
 //    ofTime
-//    ofDateTime
+    ofDateTime: Result := TDateTimeStringGenerator.Create(nil);
     ofTimestamp: Result := TTimestampStringGenerator.Create(nil);
     ofUnixTime: Result := TUnixtimeStringGenerator.Create(nil);
     ofRandom: Result := TRandomStringGenerator.Create(nil);
@@ -68,7 +69,7 @@ begin
     ofGuid: Result := TGuidStringGeneratorArgs.Create(nil);
 //    ofDate: vResult := TGuidStringGenerator.GenetateGuidString;
 //    ofTime
-//    ofDateTime
+    ofDateTime: Result := TDateTimeStringGeneratorArg.Create(nil);
     ofTimestamp: Result := TTimestampStringGeneratorArg.Create(nil);
     ofUnixTime: Result := nil;
     ofRandom: Result := TRandomStringGeneratorArg.Create(nil);

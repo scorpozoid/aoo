@@ -13,7 +13,8 @@ uses
   aoogenMode in 'aoogenMode.pas',
   aoogenHelp in 'aoogenHelp.pas',
   aoogenTimestamp in 'aoogenTimestamp.pas',
-  aoogenRandom in 'aoogenRandom.pas';
+  aoogenRandom in 'aoogenRandom.pas',
+  aoogenDateTime in 'aoogenDateTime.pas';
 
 type
   TCliParamArray = array of string;

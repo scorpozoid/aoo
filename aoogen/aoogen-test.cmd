@@ -2,8 +2,8 @@
 @rem 
 @rem 
 
-@set PATH=%PATH%;.\Win32\Debug
 @set PATH=%PATH%;.\Win32\Release
+@set PATH=%PATH%;.\Win32\Debug
 
 aoogen none 
 
@@ -51,9 +51,18 @@ aoogen rnd --offset=3000000000 --space-padding --range=100
 aoogen rnd --offset=3000000000 --space-padding --range=
 aoogen random -r
 aoogen random
+
+aoogen datetime --human
+aoogen datetime --minus
+aoogen datetime --solid
+aoogen datetime --dot 
+aoogen datetime --dot --solid
+aoogen dt -m -d -s
+aoogen dt -m -s -d
+
+
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)
-@rem aoogen datetime -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
 @pause
 

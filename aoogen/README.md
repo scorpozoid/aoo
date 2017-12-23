@@ -3,11 +3,11 @@ Some text generate utilities
 
 aoogen none generates nothing (-;
 
-aoogen guid -m (--minus), -d (--dot), -ñ (--colon), -s (--solid), -u (--upper, --uppercase), -l (--lower, --lowercase), --wrap=curlybrace,squarebraces,singlequote,doublequote, 
+aoogen guid -m (--minus), -d (--dot), -c (--colon), -s (--solid), -u (--upper, --uppercase), -l (--lower, --lowercase), --wrap=curlybrace,squarebraces,singlequote,doublequote, 
 
-aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
+aoogen date -l (--slash), -m (--minus), -d (--dot), -s (--solid)
 
-aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)
+aoogen time -c (--colon), -m (--minus), -d (--dot), -s (--solid)
 
 aoogen datetime -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
