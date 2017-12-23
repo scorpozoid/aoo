@@ -71,6 +71,18 @@ aoogen d -m -s -d
 aoogen d -m -s -l
 aoogen d -l
 
+aoogen time --human
+aoogen time --minus
+aoogen time --solid
+aoogen time --slash
+aoogen time --colon
+aoogen time --dot 
+aoogen time --dot --solid
+aoogen t -m -d -s
+aoogen t -m -s -d
+aoogen t -m -s -l
+aoogen t -l
+
 
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)

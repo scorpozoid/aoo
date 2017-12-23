@@ -7,7 +7,7 @@ aoogen guid -m (--minus), -d (--dot), -c (--colon), -s (--solid), -u (--upper, -
 
 aoogen date -l (--slash), -m (--minus), -d (--dot), -s (--solid)
 
-aoogen time -c (--colon), -m (--minus), -d (--dot), -s (--solid)
+aoogen time -l (--colon), -m (--minus), -d (--dot), -s (--solid)
 
 aoogen datetime -h (--human), -m (--minus), -d (--dot), -s (--solid)
 
