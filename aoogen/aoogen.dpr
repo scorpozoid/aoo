@@ -15,7 +15,8 @@ uses
   aoogenTimestamp in 'aoogenTimestamp.pas',
   aoogenRandom in 'aoogenRandom.pas',
   aoogenDateTime in 'aoogenDateTime.pas',
-  aoogenDate in 'aoogenDate.pas';
+  aoogenDate in 'aoogenDate.pas',
+  aoogenTime in 'aoogenTime.pas';
 
 type
   TCliParamArray = array of string;

@@ -5,10 +5,11 @@ uses
   SysUtils, Classes,
   aoogenMode,
   aoogenGenerator,
-  aoogenUnixtime,
-  aoogenTimestamp,
-  aoogenDateTime,
   aoogenDate,
+  aoogenTime,
+  aoogenDateTime,
+  aoogenTimestamp,
+  aoogenUnixtime,
   aoogenRandom,
   aoogenGuid;
 
@@ -52,7 +53,7 @@ begin
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGenerator.Create(nil);
     ofDate: Result := TDateStringGenerator.Create(nil);
-//    ofTime
+    ofTime: Result := TTimeStringGenerator.Create(nil);
     ofDateTime: Result := TDateTimeStringGenerator.Create(nil);
     ofTimestamp: Result := TTimestampStringGenerator.Create(nil);
     ofUnixTime: Result := TUnixtimeStringGenerator.Create(nil);
@@ -69,7 +70,7 @@ begin
     ofNone: Result := nil;
     ofGuid: Result := TGuidStringGeneratorArgs.Create(nil);
     ofDate: Result := TDateStringGeneratorArg.Create(nil);
-//    ofTime
+    ofTime: Result := TTimeStringGeneratorArg.Create(nil);
     ofDateTime: Result := TDateTimeStringGeneratorArg.Create(nil);
     ofTimestamp: Result := TTimestampStringGeneratorArg.Create(nil);
     ofUnixTime: Result := nil;

@@ -110,6 +110,7 @@
         <DCCReference Include="aoogenRandom.pas"/>
         <DCCReference Include="aoogenDateTime.pas"/>
         <DCCReference Include="aoogenDate.pas"/>
+        <DCCReference Include="aoogenTime.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
