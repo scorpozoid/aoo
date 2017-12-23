@@ -68,7 +68,7 @@ function TAoogenFactory.BuildGeneratorArgs: TAoogenGeneratorArgs;
 begin
   case (FMode) of
     ofNone: Result := nil;
-    ofGuid: Result := TGuidStringGeneratorArgs.Create(nil);
+    ofGuid: Result := TGuidStringGeneratorArg.Create(nil);
     ofDate: Result := TDateStringGeneratorArg.Create(nil);
     ofTime: Result := TTimeStringGeneratorArg.Create(nil);
     ofDateTime: Result := TDateTimeStringGeneratorArg.Create(nil);

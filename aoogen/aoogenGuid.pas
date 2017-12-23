@@ -10,7 +10,7 @@ type
   TGuidStringWrapModeItem = (gswmNone, gswmAngleBraces, gswmCurlyBraces, gswmSquareBraces, gswmSingleQuotes, gswmDoubleQuotes);
   TGuidStringWrapMode = array of TGuidStringWrapModeItem;
 
-  TGuidStringGeneratorArgs = class(TAoogenGeneratorArgs)
+  TGuidStringGeneratorArg = class(TAoogenGeneratorArgs)
   strict private
     FWrapMode: TGuidStringWrapMode;
     FSolid: Boolean;
@@ -42,12 +42,12 @@ implementation
 
 function TGuidStringGenerator.GenerateValue(const aArgs: TAoogenGeneratorArgs): string;
 var
-  vArgs: TGuidStringGeneratorArgs;
+  vArgs: TGuidStringGeneratorArg;
   vGuid: TGUID;
   vW: Integer;
 begin
-  if (aArgs is TGuidStringGeneratorArgs) then begin
-    vArgs := aArgs as TGuidStringGeneratorArgs;
+  if (aArgs is TGuidStringGeneratorArg) then begin
+    vArgs := aArgs as TGuidStringGeneratorArg;
     CreateGUID(vGuid);
     Result := GUIDToString(vGuid);
     Result := ReplaceStr(Result, '{', '');
@@ -91,7 +91,7 @@ end;
 
 { TGuidStringGeneratorArgs }
 
-constructor TGuidStringGeneratorArgs.Create(AOwner: TComponent);
+constructor TGuidStringGeneratorArg.Create(AOwner: TComponent);
 begin
   Reset;
   FSolid := True;
@@ -99,13 +99,13 @@ begin
 end;
 
 
-destructor TGuidStringGeneratorArgs.Destroy;
+destructor TGuidStringGeneratorArg.Destroy;
 begin
   inherited;
 end;
 
 
-procedure TGuidStringGeneratorArgs.Reset;
+procedure TGuidStringGeneratorArg.Reset;
 begin
   FWrapMode := nil;
   FSolid := False;
@@ -114,7 +114,7 @@ begin
 end;
 
 
-function TGuidStringGeneratorArgs.SetParameters(const aParameterArray: TAoogenGeneratorParameterArray): string;
+function TGuidStringGeneratorArg.SetParameters(const aParameterArray: TAoogenGeneratorParameterArray): string;
 type
   TGuidKeyArgItem = (gkaiNone, gkaiMinus, gkaiDot, gkaiColon, gkaiSolid, gkaiWrap, gkaiUpperCase, gkaiLowerCase);
 
