@@ -4,6 +4,8 @@ Some text generate utilities
 TODO:
 aoogen huid18, aoogen huid23,..
 
+aoogen huid (huid23, h23) -u (--upper, --uppercase), -l (--lower, --lowercase)
+
 aoogen none generates nothing (-;
 
 aoogen guid -m (--minus), -d (--dot), -c (--colon), -s (--solid), -u (--upper, --uppercase), -l (--lower, --lowercase), --wrap=curlybrace,squarebraces,singlequote,doublequote, 
