@@ -1,67 +1,55 @@
 #!/usr/bin/env python
+#!/usr/bin/python
+
+# -*- coding: utf-8 -*-
 #
 
-def main():
-  import time
-  import os
-  import sys, getopt
-  import re
-  import time
-  import shutil
-  from datetime import date
-  from datetime import timedelta
-  from datetime import datetime
-  from os import listdir
-  from os import sys
-  from os.path import isfile, join
 
-  fotopath = os.getcwd()
-  if 1 < len(sys.argv):
-    fotopath = sys.argv[1]
+import os
+import sys
+import getopt
 
-  fotolist = [ f for f in listdir(fotopath) if isfile(join(fotopath,f)) ]
+from jmsort_processor import JmsortProcessor
 
-  predate = datetime(1000, 1, 1)
-  curdate = datetime(1000, 1, 1)
-  prepath = ""
-  curpath = ""
 
-  for fotoname in sorted(fotolist):
-    print "[w] Photo '{0}'".format(fotoname)
-    m = re.match("(\d\d\d\d)[\.\-\_](\d\d)[\.\-\_](\d\d)[\.\-\_](\d\d)[\.\-\_](\d\d)[\.\-\_](\d\d)", fotoname, re.IGNORECASE | re.UNICODE)
-    if m:
-      yy = int(m.group(1))
-      mm = int(m.group(2))
-      dd = int(m.group(3))
-      hh = int(m.group(4))
-      nn = int(m.group(5))
-      ss = int(m.group(6))
-      curdate = datetime(yy, mm, dd, hh, nn, ss)
+def main(argv):
+    # i = 0
+    include_folders = []
+    exclude_folders = []
+    output_folder = ''
+    mode = 'touch' # 'move' 'copy'
+    try:
+        opts, args = getopt.getopt(argv, "hi:o:x:n:m", ["include=", "output=", "exclude=", "mode="])
+    except getopt.GetoptError:
+        print('jmsort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print('jmsort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
+            sys.exit()
+        elif opt in ("-i", "--include"):
+            include_folder = arg.strip()
+            include_folders.append(include_folder)
+        elif opt in ("-o", "--output"):
+            output_folder = arg.strip()
+        elif opt in ("-x", "--exclude"):
+            exclude_folder = arg.strip()
+            exclude_folders.append(exclude_folder)
+        elif opt in ("-m", "--mode"):
+            mode = arg.strip()
 
-      yearpath = os.path.join(fotopath, "{0:04d}".format(yy))
-      curpath = os.path.join(yearpath, "{0:04d}-{1:02d}-{2:02d}".format(yy, mm, dd))
+    for include_folder in include_folders:
+        print('Include folders:' + include_folder)
 
-      if not os.path.exists(curpath):
-        print ">> {0}".format(curpath)
-        os.makedirs(curpath)
+    for exclude_folder in exclude_folders:
+        print('Exclude folder:' + exclude_folder)
 
-      if predate and prepath:
-        if curdate.date() > predate.date():
-          # print "[w] Date shift '{0}' -> '{1}'".format(predate.date(), curdate.date())
-          timespan = abs(curdate - predate)
-          minspan = timespan.total_seconds() / 60
-          if 120 > minspan:
-            #print "[!] Party goes on! {0} -> {1} ({2}min), use previous folder {3}".format(predate, curdate, minspan, prepath)
-            print "[!] Party goes on! {0} -> {1} ({2}min)".format(predate, curdate, minspan)
-            curpath = prepath
+    print('Output folder:' + output_folder)
 
-      #print("mv {0} to {1}".format(fotoname, curpath))
-      fotoname = os.path.join(fotopath, fotoname)
-      shutil.move(fotoname, curpath)
+    processor = JmsortProcessor(include_folders, exclude_folders, output_folder, mode)
+    processor.process()
 
-      predate = curdate
-      prepath = curpath
 
 if __name__ == "__main__":
-  main()
+    main(sys.argv[1:])
 
