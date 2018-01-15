@@ -1,0 +1,6 @@
+git rev-list --full-history --all --abbrev-commit | wc -l | sed -e 's/^ *//'
+git rev-list --reverse HEAD | awk "{ print NR }" | tail -n 1
+git rev-list HEAD | wc -l
+git rev-list --count HEAD
+
+git rev-list --count --first-parent HEAD
