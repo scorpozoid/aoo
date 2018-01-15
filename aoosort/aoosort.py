@@ -9,7 +9,7 @@ import os
 import sys
 import getopt
 
-from jmsort_processor import AoosortProcessor
+from aoosort_processor import AoosortProcessor
 
 
 def main(argv):
@@ -21,11 +21,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hi:o:x:n:m", ["include=", "output=", "exclude=", "mode="])
     except getopt.GetoptError:
-        print('jmsort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
+        print('aoosort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('jmsort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
+            print('aoosort.py -i <include_folder> -o <output_folder> -x <exclude_folder>')
             sys.exit()
         elif opt in ("-i", "--include"):
             include_folder = arg.strip()

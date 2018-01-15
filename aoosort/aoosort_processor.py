@@ -6,7 +6,7 @@ import sys
 import os
 import shutil
 
-from jmsort_photo import AoosortPhoto
+from aoosort_photo import AoosortPhoto
 
 
 def debug(msg):

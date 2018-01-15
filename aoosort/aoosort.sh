@@ -1,5 +1,5 @@
 #!/bin/sh
 
-python jmsort.py -i ~/media/art -i ~/media/pic -x ~/media/boo -o ~/temp/jmsort --mode=touch
+python aoosort.py -i ~/media/art -i ~/media/pic -x ~/media/boo -o ~/temp/aoosort --mode=touch
 
 # EOF
