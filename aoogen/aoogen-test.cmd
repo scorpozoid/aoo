@@ -22,6 +22,9 @@ aoogen timestamp -s
 aoogen timestamp --solid
 aoogen timestamp -h --iso -m --dot --solid
 
+rem uuidgen
+rem powershell -Command "[guid]::NewGuid().ToString()"
+rem cmd /c powershell.exe -Command "[guid]::NewGuid().ToString()"
 aoogen guid
 aoogen guid -m
 aoogen guid -s
