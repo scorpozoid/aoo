@@ -38,14 +38,21 @@ class AoosortProcessor:
 
 
     def decode_file_name(self, file_name):
-        # Linux 	'linux'
-        # Windows 	'win32'
-        # Windows/Cygwin 	'cygwin'
-        # Mac OS X 	'darwin'
-        if sys.platform.startswith('win'):
+        # #return file_name.decode("cp1251")
+        # # Linux 	'linux'
+        # # Windows 	'win32'
+        # # Windows/Cygwin 	'cygwin'
+        # # Mac OS X 	'darwin'
+        # if sys.platform.startswith('win'):
+        #     return file_name.decode("cp1251")
+        # else:
+        #     return file_name
+        if isinstance(file_name, str):
             return file_name.decode("cp1251")
-        else:
+        elif isinstance(file_name, unicode):
             return file_name
+        else:
+            print ""
 
 
     def prepare_file_list(self):
@@ -64,13 +71,17 @@ class AoosortProcessor:
                             continue
                     file_name = self.decode_file_name(filename)
                     file_path = os.path.join(root_name, file_name)
-                    self.file_list.append(file_path)
+                    if os.path.exists(file_path):
+                        self.file_list.append(file_path)
 
 
     def store_invalid_file_name_list(self, file_name_list):
-        file_encoding = 'cp1251'
+        file_encoding = 'utf-8'
+        if sys.platform.startswith('win'):
+            file_encoding = 'cp1251'
         file_name = os.path.join(self.output_folder, "invalid.lst")
-        f = codecs.open(file_name, 'w', encoding=file_encoding)  # 'utf-8' 'cp1251'
+        print(file_name)
+        f = codecs.open(file_name, 'w+', encoding=file_encoding)
         try:
             f.write(u'# {}\n'.format(file_encoding))
             for file_name in file_name_list[:]:
@@ -209,6 +220,7 @@ class AoosortProcessor:
             else:
                 invalid_file_name_list.append(file_name)
                 #warning(u"Invalid file: {}".format(file_name.decode("cp1251")))
+                print(file_name)
                 warning(u"Invalid file: {}".format(file_name))
 
         debug("Input count: {}".format(self.input_file_count))

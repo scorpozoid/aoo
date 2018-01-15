@@ -32,6 +32,9 @@ def main(argv):
             include_folders.append(include_folder)
         elif opt in ("-o", "--output"):
             output_folder = arg.strip()
+            if not os.path.isdir(output_folder):
+                print("Output folder '{}' doesn't exists, exiting...".format(output_folder))
+                exit(2)
         elif opt in ("-x", "--exclude"):
             exclude_folder = arg.strip()
             exclude_folders.append(exclude_folder)
