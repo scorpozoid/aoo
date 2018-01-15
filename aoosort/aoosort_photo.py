@@ -11,7 +11,7 @@ def warning(msg):
     print(msg.encode(sys.stdout.encoding, errors='replace'))
 
 
-class JmsortPhoto:
+class AoosortPhoto:
     def __init__(self, file_path):
         self.file_path = file_path
         self.file_name = os.path.basename(file_path)

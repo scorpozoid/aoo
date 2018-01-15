@@ -6,7 +6,7 @@ import sys
 import os
 import shutil
 
-from jmsort_photo import JmsortPhoto
+from jmsort_photo import AoosortPhoto
 
 
 def debug(msg):
@@ -17,7 +17,7 @@ def warning(msg):
     print(msg.encode(sys.stdout.encoding, errors='replace'))
 
 
-class JmsortProcessor:
+class AoosortProcessor:
     def __init__(self, include_folders, exclude_folders, output_folder, mode):
         self.include_folders = include_folders
         self.exclude_folders = exclude_folders
@@ -33,7 +33,7 @@ class JmsortProcessor:
 
 
     def __str__(self):
-        return "JmsortProcessor"
+        return "AoosortProcessor"
         return "{} -> {}".format(self.include_folders.strip(), self.output_folder.strip())
 
 
@@ -201,7 +201,7 @@ class JmsortProcessor:
         invalid_file_name_list = []
         for file_name in self.file_list:
             self.input_file_count += 1
-            photo = JmsortPhoto(file_name)
+            photo = AoosortPhoto(file_name)
             if photo.is_valid():
                 self.input_valid_photo_count += 1
                 photo_list.append(photo)

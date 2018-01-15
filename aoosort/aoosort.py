@@ -9,7 +9,7 @@ import os
 import sys
 import getopt
 
-from jmsort_processor import JmsortProcessor
+from jmsort_processor import AoosortProcessor
 
 
 def main(argv):
@@ -46,7 +46,7 @@ def main(argv):
 
     print('Output folder:' + output_folder)
 
-    processor = JmsortProcessor(include_folders, exclude_folders, output_folder, mode)
+    processor = AoosortProcessor(include_folders, exclude_folders, output_folder, mode)
     processor.process()
 
 
