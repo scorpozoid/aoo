@@ -150,7 +150,7 @@ class AoosortProcessor:
         if 12 == int(photo.mm) and 17 == int(photo.dd):
             return u" Тамара (ДР)"
         if 5 == int(photo.mm) and 8 == int(photo.dd):
-            return u" Борис (ДР))"
+            return u" Борис (ДР)"
         return u""
         
 
