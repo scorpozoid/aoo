@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# TODO: review md5 calculation method for photo identify/dupefind (xabl)
+# TODO: extract camera model from file name and/or exif
+
+
 import re
 import os
 import sys
@@ -59,7 +63,7 @@ class AoosortPhoto:
                     self.ss = m62.group(6)
                     self.ms = '000'
                 else:
-                    m63 = re.match("Screenshot_(\d\d\d\d)(\d\d)(\d\d)[\.\-\_](\d\d)(\d\d)(\d\d)", self.file_name, re_flags)
+                    m63 = re.match("(\d\d\d\d)(\d\d)(\d\d)[\.\-\_](\d\d)(\d\d)(\d\d)", self.file_name, re_flags)
                     if m63:
                         self.yyyy = m63.group(1)
                         self.mm = m63.group(2)

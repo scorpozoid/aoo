@@ -34,7 +34,7 @@ class AoosortProcessor:
 
     def __str__(self):
         return "AoosortProcessor"
-        return "{} -> {}".format(self.include_folders.strip(), self.output_folder.strip())
+        # return "{} -> {}".format(self.include_folders.strip(), self.output_folder.strip())
 
 
     def decode_file_name(self, file_name):
