@@ -102,13 +102,17 @@ class AoosortDupFinder:
         move_cmd = "//"
         line_comment = "//"
         cmd_file_footer = ""
+        folder_header_line_prefix_spacing = ""
+        # README: [SPACEPAD] нужен чтобы в результирующем файле быстро читать-и-сравнивать перемещаемые файлв глазами 
         if sys.platform.startswith('linux'):  
+            folder_header_line_prefix_spacing = "     "
             cmd_file_header = "#!/bin/bash"
             cmd_file_footer = "echo Complete... && read"
             cmd_file_name = "mvdupe.sh"
             line_comment = "# "
-            move_cmd = '[ -w "{0}" ] mv "{0}" [SPACEPAD] {1} {2} {3}{4}'
+            move_cmd = '[ -w "{0}" ] && mv "{0}" [SPACEPAD] {1} {2} {3}{4}'
         if sys.platform.startswith('win'):
+            folder_header_line_prefix_spacing = "  "
             cmd_file_name = "mvdupe.cmd"
             cmd_file_header = "@echo off"
             cmd_file_footer = "echo Complete... & pause"
@@ -137,7 +141,7 @@ class AoosortDupFinder:
                 
             for t in photo_time_hash:
                 if 1 < len(photo_time_hash[t]):
-                  folder_line = line_comment + ":   " + folder
+                  folder_line = line_comment + ":" + folder_header_line_prefix_spacing + folder
                   mv_cmd_list.append(folder_line)
                   break
 
