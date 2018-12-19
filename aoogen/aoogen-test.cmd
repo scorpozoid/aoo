@@ -86,6 +86,11 @@ aoogen t -m -s -d
 aoogen t -m -s -l
 aoogen t -l
 
+set aoogenout=
+for /f "tokens=* usebackq" %%f in (`aoogen d --dot`) do (
+  set aoogenout=%%f
+)
+echo %aoogenout%
 
 @rem aoogen date -h (--human), -m (--minus), -d (--dot), -s (--solid)
 @rem aoogen time -h (--human), -m (--minus), -d (--dot), -s (--solid)
